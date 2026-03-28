@@ -3,6 +3,7 @@
 ## What I fixed
 
 ### Application and local runtime
+- Upgraded local Postgres **16 → 18** in `starter/apps/docker-compose.yaml` (`postgres:18-alpine`) in step with the Terraform RDS upgrade (see below).
 - Fixed local orchestration and startup issues in `starter/apps`.
 - Added robust local end-to-end verification via `scripts/test_docker_compose.sh`.
 - Updated health endpoint consistency by adding `/health/live` to API/processor services.
@@ -34,7 +35,7 @@
   - `skip_final_snapshot = false`
   - `final_snapshot_identifier = "${var.environment}-postgres-final"`
   - `apply_immediately = false` (safer production behavior)
-  - pinned engine version to `engine_version = "18.3"` instead of leaving version selection implicit
+  - upgraded RDS Postgres **16 → 18** and pinned `engine_version = "18.3"`
 - Upgraded network architecture:
   - public ALB, private ECS and RDS
   - private subnets with NAT egress
