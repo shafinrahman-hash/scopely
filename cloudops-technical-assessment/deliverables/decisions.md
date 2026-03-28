@@ -10,7 +10,7 @@
   - pinned Python base image patch versions
   - run `order-history-service` as non-root user
   - removed hardcoded credentials from app scripts and compose defaults
-  - moved hardcoded secrets to `.env`, So that later we can use AWS Secret manager and add them as environment variables in ECS/EKS
+  - moved hardcoded secrets to `.env` (tracked pattern: commit `starter/apps/.env.example`, copy to `.env` locally) so production can later use AWS Secrets Manager and inject values as environment variables in ECS/EKS
 
 ### Terraform and infrastructure
 - Added provider settings for local mock planning (without real AWS account) in stack/ECR roots.
@@ -56,7 +56,13 @@
 ## Validation steps and results
 
 ### Local app validation
-From `starter/apps`:
+From `starter/apps`, create local env from the example (`.gitignore` keeps `.env` out of Git):
+
+```bash
+cp .env.example .env
+```
+
+Then:
 
 ```bash
 make compose-all
