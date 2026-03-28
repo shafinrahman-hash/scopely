@@ -1,0 +1,15 @@
+order_api_image     = "212596546492.dkr.ecr.eu-west-1.amazonaws.com/cloudops-order-api:1.0.0"
+processor_image     = "212596546492.dkr.ecr.eu-west-1.amazonaws.com/cloudops-order-processor:1.0.0"
+order_history_image = "212596546492.dkr.ecr.eu-west-1.amazonaws.com/cloudops-order-history-service:1.0.0"
+order_api_repo_arn       = "arn:aws:ecr:eu-west-1:212596546492:repository/cloudops-order-api"
+order_processor_repo_arn = "arn:aws:ecr:eu-west-1:212596546492:repository/cloudops-order-processor"
+order_history_repo_arn   = "arn:aws:ecr:eu-west-1:212596546492:repository/cloudops-order-history-service"
+enable_https             = false
+acm_certificate_arn      = null
+enable_waf               = false
+waf_rate_limit           = 2000
+waf_blocked_countries    = []
+waf_blocked_ip_cidrs     = []
+enable_waf_logging       = false
+use_secrets_manager      = false
+rds_database_url_secret_arn = "arn:aws:secretsmanager:eu-west-1:000000000000:secret:placeholder-db-url"
