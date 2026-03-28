@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="current-arch" name="Current">
-        <mxGraphModel dx="918" dy="692" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1400" math="0" shadow="0">
+        <mxGraphModel dx="1326" dy="827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1400" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -29,7 +29,7 @@
                     <mxGeometry x="1620" y="500" width="300" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="s3logs" value="S3 ALB Access Logs&#xa;(encrypted + lifecycle)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="1060" y="560" width="330" height="80" as="geometry"/>
+                    <mxGeometry x="1061" y="560" width="330" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="e1" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="client" target="waf" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -55,11 +55,56 @@
                 <mxCell id="e8" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="alb" target="s3logs" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="&lt;p data-end=&quot;189&quot; data-start=&quot;97&quot;&gt;&lt;strong data-end=&quot;113&quot; data-start=&quot;97&quot;&gt;VPC subnets:&lt;/strong&gt;&lt;br&gt;&lt;strong data-end=&quot;129&quot; data-start=&quot;118&quot;&gt;Public:&lt;/strong&gt; ALB, NAT Gateway (egress)&lt;br&gt;&lt;strong data-end=&quot;172&quot; data-start=&quot;160&quot;&gt;Private:&lt;/strong&gt; ECS tasks, RDS&lt;/p&gt;&lt;p data-end=&quot;229&quot; data-start=&quot;196&quot;&gt;&lt;strong data-end=&quot;203&quot; data-start=&quot;196&quot;&gt;WAF&lt;/strong&gt; attached to the &lt;strong data-end=&quot;227&quot; data-start=&quot;220&quot;&gt;ALB&lt;/strong&gt;&lt;/p&gt;&lt;p data-end=&quot;329&quot; data-start=&quot;236&quot;&gt;&lt;strong data-end=&quot;278&quot; data-start=&quot;236&quot;&gt;DynamoDB, SQS, S3, and Secrets Manager&lt;/strong&gt; are accessed via &lt;strong data-end=&quot;313&quot; data-start=&quot;296&quot;&gt;VPC endpoints&lt;/strong&gt; or &lt;strong data-end=&quot;329&quot; data-start=&quot;317&quot;&gt;AWS APIs&lt;/strong&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
+                <mxCell id="2" value="&lt;p data-end=&quot;189&quot; data-start=&quot;97&quot;&gt;&lt;strong data-end=&quot;113&quot; data-start=&quot;97&quot;&gt;VPC subnets:&lt;/strong&gt;&lt;br&gt;&lt;strong data-end=&quot;129&quot; data-start=&quot;118&quot;&gt;Public:&lt;/strong&gt; ALB, NAT Gateway (egress)&lt;br&gt;&lt;strong data-end=&quot;172&quot; data-start=&quot;160&quot;&gt;Private:&lt;/strong&gt; ECS tasks, RDS&lt;/p&gt;&lt;p data-end=&quot;229&quot; data-start=&quot;196&quot;&gt;&lt;strong data-end=&quot;203&quot; data-start=&quot;196&quot;&gt;WAF&lt;/strong&gt; attached to the &lt;strong data-end=&quot;227&quot; data-start=&quot;220&quot;&gt;ALB&lt;/strong&gt;&lt;/p&gt;&lt;p data-end=&quot;329&quot; data-start=&quot;236&quot;&gt;&lt;strong data-end=&quot;278&quot; data-start=&quot;236&quot;&gt;DynamoDB, SQS, S3, and Secrets Manager&lt;/strong&gt; are accessed via &lt;strong data-end=&quot;313&quot; data-start=&quot;296&quot;&gt;VPC endpoints&lt;/strong&gt; or &lt;strong data-end=&quot;329&quot; data-start=&quot;317&quot;&gt;AWS APIs&lt;/strong&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="70" y="130" width="470" height="110" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="&lt;p data-end=&quot;189&quot; data-start=&quot;97&quot;&gt;&lt;b&gt;vpc_cidr:&lt;/b&gt;&amp;nbsp;10.124.0.0/20&lt;br&gt;&lt;br&gt;&lt;b&gt;public_subnets_cidr&lt;/b&gt;  = 10.124.0.0/27, 10.124.0.32/27&lt;br&gt;&lt;b&gt;private_subnets_cidr&lt;/b&gt; = 10.124.1.0/27, 10.124.1.32/27&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
+                <mxCell id="3" value="&lt;p data-end=&quot;189&quot; data-start=&quot;97&quot;&gt;&lt;b&gt;vpc_cidr:&lt;/b&gt;&amp;nbsp;10.124.0.0/20&lt;br&gt;&lt;br&gt;&lt;b&gt;public_subnets_cidr&lt;/b&gt;  = 10.124.0.0/27, 10.124.0.32/27&lt;br&gt;&lt;b&gt;private_subnets_cidr&lt;/b&gt; = 10.124.1.0/27, 10.124.1.32/27&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="70" y="40" width="470" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-3" value="Python code: how microservices connect (HTTP + clients in repo)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="81" y="740" width="720" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-4" value="Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="81" y="820" width="120" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-5" value="order-api&#xa;FastAPI, httpx, boto3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="261" y="810" width="200" height="76" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-6" value="order-processor&#xa;FastAPI, httpx, boto3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="541" y="810" width="220" height="76" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-7" value="order-history-service&#xa;FastAPI, psycopg" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="841" y="810" width="220" height="76" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-8" value="DynamoDB&#xa;orders table" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="261" y="1020" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-9" value="DynamoDB&#xa;inventory table" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="541" y="1020" width="220" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-10" value="RDS PostgreSQL&#xa;projection / read models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="841" y="1020" width="220" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-11" value="REST" style="endArrow=block;html=1;strokeColor=#666666;" edge="1" parent="1" source="eRTWN0OV878-gmyEiqfI-4" target="eRTWN0OV878-gmyEiqfI-5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-12" value="POST /process-order" style="endArrow=block;html=1;strokeColor=#666666;" edge="1" parent="1" source="eRTWN0OV878-gmyEiqfI-5" target="eRTWN0OV878-gmyEiqfI-6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-13" value="POST /users&#xa;POST /users/{id}/orders" style="endArrow=block;html=1;strokeColor=#666666;" edge="1" parent="1" source="eRTWN0OV878-gmyEiqfI-6" target="eRTWN0OV878-gmyEiqfI-7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-14" value="boto3" style="endArrow=block;html=1;strokeColor=#666666;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="eRTWN0OV878-gmyEiqfI-5" target="eRTWN0OV878-gmyEiqfI-8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-15" value="boto3" style="endArrow=block;html=1;strokeColor=#666666;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="eRTWN0OV878-gmyEiqfI-6" target="eRTWN0OV878-gmyEiqfI-9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-16" value="psycopg&#xa;(DATABASE_URL)" style="endArrow=block;html=1;strokeColor=#666666;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="eRTWN0OV878-gmyEiqfI-7" target="eRTWN0OV878-gmyEiqfI-10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="eRTWN0OV878-gmyEiqfI-17" value="order-api: GET /health also calls order-processor /health; optional SRV DNS (SRV_ENDPOINT) can resolve ORDER_PROCESSOR_URL. order-history-service has no outbound calls to other microservices." style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
+                    <mxGeometry x="81" y="1140" width="980" height="70" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
