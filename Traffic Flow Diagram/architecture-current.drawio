@@ -1,0 +1,67 @@
+<mxfile host="65bd71144e">
+    <diagram id="current-arch" name="Current">
+        <mxGraphModel dx="918" dy="692" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1400" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="client" value="Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="290" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="waf" value="AWS WAF (optional toggle)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="290" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="alb" value="ALB (HTTP/HTTPS redirect toggle)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="290" width="330" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ecs" value="ECS Services (Private, Multi-AZ)&#xa;- order-api&#xa;- order-processor&#xa;- order-history-service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1060" y="210" width="360" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="secrets" value="Secrets Manager&#xa;(DB URL secret toggle)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="1620" y="140" width="300" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="dynamo" value="DynamoDB&#xa;(orders + inventory)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1620" y="260" width="300" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="sqs" value="SQS&#xa;(orders queue)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1620" y="380" width="300" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="rds" value="RDS PostgreSQL (order-history)&#xa;Multi-AZ + backups + deletion protection&#xa;final snapshot + pinned engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1620" y="500" width="300" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="s3logs" value="S3 ALB Access Logs&#xa;(encrypted + lifecycle)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="1060" y="560" width="330" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="client" target="waf" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="waf" target="alb" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="alb" target="ecs" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="ecs" target="secrets" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="ecs" target="dynamo" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="ecs" target="sqs" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="ecs" target="rds" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" value="" style="endArrow=block;html=1;strokeColor=#666666;" parent="1" source="alb" target="s3logs" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="&lt;p data-end=&quot;189&quot; data-start=&quot;97&quot;&gt;&lt;strong data-end=&quot;113&quot; data-start=&quot;97&quot;&gt;VPC subnets:&lt;/strong&gt;&lt;br&gt;&lt;strong data-end=&quot;129&quot; data-start=&quot;118&quot;&gt;Public:&lt;/strong&gt; ALB, NAT Gateway (egress)&lt;br&gt;&lt;strong data-end=&quot;172&quot; data-start=&quot;160&quot;&gt;Private:&lt;/strong&gt; ECS tasks, RDS&lt;/p&gt;&lt;p data-end=&quot;229&quot; data-start=&quot;196&quot;&gt;&lt;strong data-end=&quot;203&quot; data-start=&quot;196&quot;&gt;WAF&lt;/strong&gt; attached to the &lt;strong data-end=&quot;227&quot; data-start=&quot;220&quot;&gt;ALB&lt;/strong&gt;&lt;/p&gt;&lt;p data-end=&quot;329&quot; data-start=&quot;236&quot;&gt;&lt;strong data-end=&quot;278&quot; data-start=&quot;236&quot;&gt;DynamoDB, SQS, S3, and Secrets Manager&lt;/strong&gt; are accessed via &lt;strong data-end=&quot;313&quot; data-start=&quot;296&quot;&gt;VPC endpoints&lt;/strong&gt; or &lt;strong data-end=&quot;329&quot; data-start=&quot;317&quot;&gt;AWS APIs&lt;/strong&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="130" width="470" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;p data-end=&quot;189&quot; data-start=&quot;97&quot;&gt;&lt;b&gt;vpc_cidr:&lt;/b&gt;&amp;nbsp;10.124.0.0/20&lt;br&gt;&lt;br&gt;&lt;b&gt;public_subnets_cidr&lt;/b&gt;  = 10.124.0.0/27, 10.124.0.32/27&lt;br&gt;&lt;b&gt;private_subnets_cidr&lt;/b&gt; = 10.124.1.0/27, 10.124.1.32/27&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="40" width="470" height="70" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
